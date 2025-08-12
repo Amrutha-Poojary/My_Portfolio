@@ -3,44 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <title>Amrutha's Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation styles */
+        nav {
+            background: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .links a:hover {
+            color: #007bff;
+        }
+        
+        .contact-btn a {
+            background: #007bff;
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        /* Hero section with image and text */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        
+        .hero-image {
+            width: 45%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .hero-text {
+            width: 50%;
+            padding-left: 2rem;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        
+        .hero-text h1 span {
+            color: #007bff;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .btn {
+            text-decoration: none;
+            color: white;
+            background: #007bff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #0069d9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: #333;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #007bff;
+            transform: translateY(-3px);
+        }
+        
+        /* Dropdown/mobile menu styles */
+        .dropdown {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #f8f9fa;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 100;
+        }
+        
+        .dropdown a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+        }
+        
+        /* Icon styles */
+        .hamburg, .cancel {
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            color: #333;
+        }
+        
+        .cancel {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .links {
+                display: none;
+            }
+            
+            .hamburg {
+                display: block;
+            }
+            
+            .hero {
+                flex-direction: column;
+                padding-top: 6rem;
+                text-align: center;
+            }
+            
+            .hero-image, .hero-text {
+                width: 100%;
+                padding: 0;
+            }
+            
+            .hero-text {
+                margin-top: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="id">
-            <div class="nav-logo">
-                <p class="nav-name">Logo</p>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span>Amrutha</span>
             </div>
-            <div class="nav-menu" id="myNavMenu">
-                <ul class="nav_menu_list">
-                    <li class="nav_list">
-                        <a href="#home" class="nav-link">Home</a>
-                        <div class="circle"></div>
-                    </li>
-                    <li class="nav_list">
-                        <a href="#about" class="nav-link">About</a>
-                        <div class="circle"></div>
-                    </li>
-                    <li class="nav_list">
-                        <a href="#projects" class="nav-link">Projects</a>
-                        <div class="circle"></div>
-                    </li>
-                    <li class="nav_list">
-                        <a href="#contact" class="nav-link">Contact</a>
-                        <div class="circle"></div>
-                    </li>
-                </ul>
+            <div class="links">
+                <div class="link"><a href="#">Home</a></div>
+                <div class="link"><a href="#">About</a></div>
+                <div class="link"><a href="#">Skills</a></div>
+                <div class="link"><a href="#">Services</a></div>
+                <div class="link"><a href="#">Blogs</a></div>
+                <div class="link contact-btn"><a href="#">Contact us</a></div>
+            </div>
+            <i class="fas fa-bars hamburg"></i>
+        </div>
+        <div class="dropdown">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Skills</a>
+            <a href="#">Services</a>
+            <a href="#">Blogs</a>
+            <a href="#">Contact us</a>
+            <i class="fas fa-times cancel"></i>
+        </div>
+    </nav>
 
+    <section class="hero">
+        <div class="hero-image">
+            <!-- Replace with your actual image path -->
+            <img src="https://via.placeholder.com/500x600" alt="Amrutha's Photo">
+        </div>
+        <div class="hero-text">
+            <h1>Hi there, I'm <span>Amrutha</span></h1>
+            <p>Welcome to my personal portfolio website. I'm a passionate professional with expertise in various domains. Here you'll find information about my skills, projects, and how to get in touch with me.</p>
+            <a href="#" class="btn">Download CV</a>
+            
+            <!-- Social Links Section -->
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
             </div>
-            <!-- Dark mode -->
-             <div class="mode">
-                <div class="moon-sun" id="toggle-switch">
-                    <i class="fa fa-moon"></i>
-                    <i class="fa fa-sun"></i>
-                </div>
-             </div>
-        </nav>
-    </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu functionality
+        const hamburg = document.querySelector('.hamburg');
+        const cancel = document.querySelector('.cancel');
+        const dropdown = document.querySelector('.dropdown');
+        
+        hamburg.addEventListener('click', () => {
+            dropdown.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        cancel.addEventListener('click', () => {
+            dropdown.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    </script>
 </body>
 </html>
